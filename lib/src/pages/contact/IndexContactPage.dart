@@ -75,12 +75,10 @@ class _IndexContactPageState extends State<IndexContactPage> {
 
 // Contact
   selected_contact(Contact contact) async {
-    // setState(() {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => ShowContactPage(
               contact: contact,
             )));
-    // });
 
   }
 

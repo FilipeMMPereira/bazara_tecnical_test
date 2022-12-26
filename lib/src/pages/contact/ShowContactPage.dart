@@ -1,4 +1,5 @@
 import 'package:bazara_tecnical_test/src/models/contact.dart';
+import 'package:bazara_tecnical_test/src/pages/contact/EditContactPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -39,7 +40,9 @@ class _ShowContactPageState extends State<ShowContactPage> {
               IconButton(
                 color: Colors.white,
                 icon: Icon(Icons.edit),
-                onPressed: () {},
+                onPressed: () {
+                  selected_contact(contact);
+                },
               ),
             ],
           );
@@ -66,12 +69,19 @@ class _ShowContactPageState extends State<ShowContactPage> {
       ),
     );
   }
+
+  selected_contact(contact) async {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => EditContactPage(
+              contact: contact,
+            )));
+  }
 }
 // }
 
 Container buildHeader(BuildContext context, String name) {
   return Container(
-    decoration: BoxDecoration(color: Color.fromARGB(255, 40, 139, 252)),
+    decoration: BoxDecoration(color: Colors.blue),
     width: MediaQuery.of(context).size.width,
     height: MediaQuery.of(context).size.height * 0.40,
     child: Column(
@@ -115,7 +125,7 @@ Padding buildInformation(phoneNumber, email, nome) {
               style: TextStyle(color: Colors.black54),
             ),
             leading: IconButton(
-              icon: Icon(Icons.phone, color: Colors.indigo),
+              icon: Icon(Icons.phone, color: Colors.blue),
               onPressed: () {},
             ),
             trailing: IconButton(
@@ -134,12 +144,10 @@ Padding buildInformation(phoneNumber, email, nome) {
               style: TextStyle(color: Colors.black54),
             ),
             leading: IconButton(
-                icon: Icon(Icons.email, color: Colors.indigo),
-                onPressed: () {}),
+                icon: Icon(Icons.email, color: Colors.blue), onPressed: () {}),
           ),
         ),
       ],
     ),
   );
 }
-// }

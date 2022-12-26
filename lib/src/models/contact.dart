@@ -24,6 +24,7 @@ Stream<List<Contact>> readContacts() {
 // Update
 
 Future UpdateContact(Contact contact, String id) async {
+  // print(id);
   final docContact = FirebaseFirestore.instance.collection('contact').doc(id);
 
   // contact.id = docContact.id;
