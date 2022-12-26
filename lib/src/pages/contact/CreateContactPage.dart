@@ -1,3 +1,5 @@
+import 'package:bazara_tecnical_test/src/models/contact.dart';
+import 'package:bazara_tecnical_test/src/pages/contact/IndexContactPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -33,9 +35,9 @@ class _CreateContactPageState extends State<CreateContactPage> {
         icon: Icon(Icons.person),
       ),
       validator: (value) {
-        // if (value.isEmpty) {
-        //   return 'Obrigatório';
-        // }
+        if (value == null || value.isEmpty) {
+          return 'The field of first name is required';
+        }
         return null;
       },
     );
@@ -50,6 +52,12 @@ class _CreateContactPageState extends State<CreateContactPage> {
         labelText: 'Last Name',
         icon: Icon(Icons.person),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'The field of last name is required';
+        }
+        return null;
+      },
     );
 
     TextFormField inputPhoneNumber = TextFormField(
@@ -59,6 +67,12 @@ class _CreateContactPageState extends State<CreateContactPage> {
         labelText: "Phone Number",
         icon: Icon(Icons.phone),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'The field of phone number is required';
+        }
+        return null;
+      },
     );
 
     TextFormField inputEmail = TextFormField(
@@ -71,6 +85,12 @@ class _CreateContactPageState extends State<CreateContactPage> {
         labelText: 'E-mail',
         icon: Icon(Icons.email),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'The field of email is required';
+        }
+        return null;
+      },
     );
 
     final picture = Column(
@@ -91,9 +111,28 @@ class _CreateContactPageState extends State<CreateContactPage> {
     );
 
     ElevatedButton submitButton = ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (_formKey.currentState!.validate()) {
+          final contact = Contact(
+              first_name: _firstName.text,
+              last_name: _lastName.text,
+              phone_number: _phoneNumber.text,
+              email: _email.text);
+
+          CreateContact(contact);
+
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const IndexContactPage()));
+        }
+      },
       child: Text('Save'),
-      style: ElevatedButton.styleFrom(shape:const StadiumBorder(), minimumSize: const Size.fromHeight(50),),
+      style: ElevatedButton.styleFrom(
+        shape: const StadiumBorder(),
+        minimumSize: const Size.fromHeight(50),
+      ),
     );
 
     ListView content = ListView(
@@ -110,7 +149,9 @@ class _CreateContactPageState extends State<CreateContactPage> {
               inputLastName,
               inputPhoneNumber,
               inputEmail,
-              const SizedBox(height: 40,),
+              const SizedBox(
+                height: 40,
+              ),
               submitButton
             ],
           ),

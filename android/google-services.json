@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "310432263667",
+    "project_id": "bazara-tecnical-test",
+    "storage_bucket": "bazara-tecnical-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310432263667:android:018d782f36e83eaa387686",
+        "android_client_info": {
+          "package_name": "com.example.bazara_tecnical_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310432263667-crcvsvcmf8g0j1m25ogeu443pqmq85lu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHJjUxp5hMRh4pB748ZEypfDljBaOz77s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310432263667-crcvsvcmf8g0j1m25ogeu443pqmq85lu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "310432263667-vs14ecb43d848mso3endrp1m5nlvg1ds.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bazaraTecnicalTest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
