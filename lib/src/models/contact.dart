@@ -31,6 +31,13 @@ Future UpdateContact(Contact contact, String id) async {
   final json = contact.toJson();
   await docContact.update(json);
 }
+
+// Delete
+
+Future DeleteContact(String id) async {
+  final docContact = FirebaseFirestore.instance.collection('contact').doc(id);
+  docContact.delete();
+}
 //================= End Controller =======================================
 
 // Model Contact
@@ -49,7 +56,7 @@ class Contact {
       required this.email});
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        // 'id': id,
         'first_name': first_name,
         'last_name': last_name,
         'phone_number': phone_number,
@@ -57,6 +64,7 @@ class Contact {
       };
 
   static Contact fromJson(Map<String, dynamic> json) => Contact(
+      id: json['id'],
       first_name: json['first_name'],
       last_name: json['last_name'],
       phone_number: json['phone_number'],

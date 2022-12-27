@@ -1,5 +1,6 @@
 import 'package:bazara_tecnical_test/src/models/contact.dart';
 import 'package:bazara_tecnical_test/src/pages/contact/EditContactPage.dart';
+import 'package:bazara_tecnical_test/src/pages/contact/IndexContactPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -34,14 +35,20 @@ class _ShowContactPageState extends State<ShowContactPage> {
             actions: <Widget>[
               IconButton(
                 color: Colors.white,
-                icon: const Icon(Icons.star_border),
-                onPressed: () {},
-              ),
-              IconButton(
-                color: Colors.white,
                 icon: Icon(Icons.edit),
                 onPressed: () {
                   selected_contact(contact);
+                },
+              ),
+              IconButton(
+                color: Colors.white,
+                icon: const Icon(Icons.delete),
+                onPressed: () {
+                  DeleteContact('${contact?.id}');
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const IndexContactPage()));
                 },
               ),
             ],

@@ -22,6 +22,11 @@ class _EditContactPageState extends State<EditContactPage> {
   void initState() {
     super.initState();
     contact = widget.contact;
+    _firstName.text = (contact?.first_name).toString();
+    _lastName.text = (contact?.last_name).toString();
+    _phoneNumber.text = (contact?.phone_number).toString();
+    _email.text = (contact?.email).toString();
+    // _firstName.text=
 
     // print(contact?.email);
     // print(contact?.id);
@@ -31,7 +36,7 @@ class _EditContactPageState extends State<EditContactPage> {
   Widget build(BuildContext context) {
     TextFormField inputFirstName = TextFormField(
       // controller: _firstName,
-      initialValue: contact?.first_name,
+      controller: _firstName,
       autofocus: true,
       keyboardType: TextInputType.text,
       inputFormatters: [
@@ -50,7 +55,7 @@ class _EditContactPageState extends State<EditContactPage> {
     );
 
     TextFormField inputLastName = TextFormField(
-      initialValue: contact?.last_name,
+      controller: _lastName,
       // controller: _lastName,
       keyboardType: TextInputType.text,
       inputFormatters: [
@@ -69,7 +74,7 @@ class _EditContactPageState extends State<EditContactPage> {
     );
 
     TextFormField inputPhoneNumber = TextFormField(
-      initialValue: contact?.phone_number,
+      controller: _phoneNumber,
       // controller: _phoneNumber,
       keyboardType: TextInputType.phone,
       decoration: const InputDecoration(
@@ -86,7 +91,7 @@ class _EditContactPageState extends State<EditContactPage> {
 
     TextFormField inputEmail = TextFormField(
       // controller: _email,
-      initialValue: contact?.email,
+      controller: _email,
       inputFormatters: [
         LengthLimitingTextInputFormatter(50),
       ],
@@ -131,10 +136,10 @@ class _EditContactPageState extends State<EditContactPage> {
               email: _email.text);
 
           UpdateContact(updatecontact, '${contact?.id}');
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const IndexContactPage()));
+          // Navigator.pushReplacement(
+          //     context,
+          //     MaterialPageRoute(
+          //         builder: (context) => const IndexContactPage()));
         }
       },
       child: Text('Save'),
