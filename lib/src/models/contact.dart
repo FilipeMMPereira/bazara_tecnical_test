@@ -27,9 +27,12 @@ Future UpdateContact(Contact contact, String id) async {
   // print(id);
   final docContact = FirebaseFirestore.instance.collection('contact').doc(id);
 
-  // contact.id = docContact.id;
+  contact.id = docContact.id;
   final json = contact.toJson();
   await docContact.update(json);
+  final updated = docContact.collection('updated_at');
+  final date = new DateTime.now();
+  await updated.add({'id': updated.id, 'datatime': date});
 }
 
 // Delete
@@ -56,7 +59,7 @@ class Contact {
       required this.email});
 
   Map<String, dynamic> toJson() => {
-        // 'id': id,
+        'id': id,
         'first_name': first_name,
         'last_name': last_name,
         'phone_number': phone_number,

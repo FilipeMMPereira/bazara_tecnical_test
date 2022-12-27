@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, non_constant_identifier_names
 
 import 'package:bazara_tecnical_test/src/components/MyDrowerList.dart';
 import 'package:bazara_tecnical_test/src/components/MyHeaderDrower.dart';
@@ -79,7 +79,6 @@ class _IndexContactPageState extends State<IndexContactPage> {
         builder: (context) => ShowContactPage(
               contact: contact,
             )));
-
   }
 
   Widget buildContact(Contact contact) => Padding(

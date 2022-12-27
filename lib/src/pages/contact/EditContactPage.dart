@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unused_local_variable, sort_child_properties_last, sized_box_for_whitespace
+
 import 'package:bazara_tecnical_test/src/models/contact.dart';
 import 'package:bazara_tecnical_test/src/pages/contact/IndexContactPage.dart';
 import 'package:flutter/material.dart';

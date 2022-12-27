@@ -1,6 +1,7 @@
 import 'package:bazara_tecnical_test/src/models/contact.dart';
 import 'package:bazara_tecnical_test/src/pages/contact/EditContactPage.dart';
 import 'package:bazara_tecnical_test/src/pages/contact/IndexContactPage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -22,6 +23,17 @@ class _ShowContactPageState extends State<ShowContactPage> {
     // TODO: implement initState
     super.initState();
     contact = widget.contact;
+
+    // print(updatedDate);
+    // Future<QuerySnapshot<Map<String, dynamic>>> updatedDate() async {
+    //   return FirebaseFirestore.instance
+    //       .collection('contact')
+    //       .doc(contact?.id)
+    //       .collection('updated_at')
+    //       .get();
+    // };
+
+    // print(updatedDate().);
   }
 
   @override
@@ -58,7 +70,11 @@ class _ShowContactPageState extends State<ShowContactPage> {
             ),
       ),
       body: StreamBuilder(
-        // stream: blocHome.contactOut,
+        stream: FirebaseFirestore.instance
+            .collection('contact')
+            .doc(contact?.id)
+            .collection('updated_at')
+            .snapshots(),
         builder: (context, snapshot) {
           return ListView(
             children: <Widget>[
@@ -67,7 +83,8 @@ class _ShowContactPageState extends State<ShowContactPage> {
                   buildHeader(
                       context, '${contact?.first_name} ${contact?.last_name}'),
                   buildInformation(contact?.phone_number, contact?.email,
-                      contact?.first_name)
+                      contact?.first_name),
+                  // snapshot.data?
                 ],
               )
             ],
