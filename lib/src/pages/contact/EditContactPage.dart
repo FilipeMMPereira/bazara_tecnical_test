@@ -138,10 +138,10 @@ class _EditContactPageState extends State<EditContactPage> {
               email: _email.text);
 
           UpdateContact(updatecontact, '${contact?.id}');
-          // Navigator.pushReplacement(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) => const IndexContactPage()));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const IndexContactPage()));
         }
       },
       child: Text('Save'),
